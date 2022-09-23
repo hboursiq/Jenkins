@@ -1,0 +1,515 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Metadata:
+    Generator: "former2"
+Description: "RHDMS S3 Buckets and related IAM"
+Resources:
+    S3Bucket:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: "acas-exports"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "aws:kms"
+                        KMSMasterKeyID: !Sub "arn:aws-us-gov:kms:${AWS::Region}:314679227390:key/mrk-f5796452ded64aad9731f5ee6cd06c27"
+                    BucketKeyEnabled: true
+            LoggingConfiguration: 
+                DestinationBucketName: !Ref S3Bucket8
+                LogFilePrefix: "acas-exports/"
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3Bucket2:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: !Sub "cf-templates-15yundfxczjxy-${AWS::Region}"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "aws:kms"
+                        KMSMasterKeyID: !Sub "arn:aws-us-gov:kms:${AWS::Region}:314679227390:key/mrk-f5796452ded64aad9731f5ee6cd06c27"
+                    BucketKeyEnabled: true
+            LoggingConfiguration: 
+                DestinationBucketName: !Ref S3Bucket8
+                LogFilePrefix: !Sub "cf-templates-15yundfxczjxy-${AWS::Region}/"
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3Bucket3:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: !Sub "config-bucket-${AWS::AccountId}"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "aws:kms"
+                        KMSMasterKeyID: !Sub "arn:aws-us-gov:kms:${AWS::Region}:314679227390:key/mrk-f5796452ded64aad9731f5ee6cd06c27"
+                    BucketKeyEnabled: true
+            LoggingConfiguration: 
+                DestinationBucketName: !Ref S3Bucket8
+                LogFilePrefix: !Sub "config-bucket-${AWS::AccountId}/"
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3Bucket4:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: !Sub "config-rule-code-bucket-${AWS::AccountId}-${AWS::Region}"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "aws:kms"
+                        KMSMasterKeyID: !Sub "arn:aws-us-gov:kms:${AWS::Region}:314679227390:key/mrk-f5796452ded64aad9731f5ee6cd06c27"
+                    BucketKeyEnabled: true
+            LoggingConfiguration: 
+                DestinationBucketName: !Ref S3Bucket8
+                LogFilePrefix: !Sub "config-rule-code-bucket-${AWS::AccountId}-${AWS::Region}/"
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3Bucket5:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: "dodcertificates"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "aws:kms"
+                        KMSMasterKeyID: !Sub "arn:aws-us-gov:kms:${AWS::Region}:314679227390:key/mrk-f5796452ded64aad9731f5ee6cd06c27"
+                    BucketKeyEnabled: true
+            LoggingConfiguration: 
+                DestinationBucketName: !Ref S3Bucket8
+                LogFilePrefix: "dodcertificates/"
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3Bucket6:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: "rhdms-s3-access-logs-us-gov-east-1"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "AES256"
+                    BucketKeyEnabled: true
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3Bucket7:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: "nessuscm"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "aws:kms"
+                        KMSMasterKeyID: !Sub "arn:aws-us-gov:kms:${AWS::Region}:314679227390:key/mrk-f5796452ded64aad9731f5ee6cd06c27"
+                    BucketKeyEnabled: true
+            LoggingConfiguration: 
+                DestinationBucketName: !Ref S3Bucket8
+                LogFilePrefix: "nessuscm/"
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3Bucket8:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: !Sub "rhdms-s3-access-logs-${AWS::Region}"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "AES256"
+                    BucketKeyEnabled: true
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3Bucket9:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: "rhel8"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "aws:kms"
+                        KMSMasterKeyID: !Sub "arn:aws-us-gov:kms:${AWS::Region}:314679227390:key/mrk-f5796452ded64aad9731f5ee6cd06c27"
+                    BucketKeyEnabled: true
+            LoggingConfiguration: 
+                DestinationBucketName: !Ref S3Bucket8
+                LogFilePrefix: "rhel8/"
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3Bucket10:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: "tmp"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "aws:kms"
+                        KMSMasterKeyID: !Sub "arn:aws-us-gov:kms:${AWS::Region}:314679227390:key/mrk-f5796452ded64aad9731f5ee6cd06c27"
+                    BucketKeyEnabled: true
+            LoggingConfiguration: 
+                DestinationBucketName: !Ref S3Bucket8
+                LogFilePrefix: "tmp/"
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3Bucket11:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: "trendmicrorh"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "aws:kms"
+                        KMSMasterKeyID: !Sub "arn:aws-us-gov:kms:${AWS::Region}:314679227390:key/mrk-f5796452ded64aad9731f5ee6cd06c27"
+                    BucketKeyEnabled: true
+            LoggingConfiguration: 
+                DestinationBucketName: !Ref S3Bucket8
+                LogFilePrefix: "trendmicrorh/"
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3Bucket12:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: "ubuntu-gold-image-iran"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "aws:kms"
+                        KMSMasterKeyID: !Sub "arn:aws-us-gov:kms:${AWS::Region}:314679227390:key/mrk-f5796452ded64aad9731f5ee6cd06c27"
+                    BucketKeyEnabled: true
+            LoggingConfiguration: 
+                DestinationBucketName: !Ref S3Bucket8
+                LogFilePrefix: "ubuntu-gold-image-iran/"
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3Bucket13:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: "uscc-ami-bucket"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "aws:kms"
+                        KMSMasterKeyID: !Sub "arn:aws-us-gov:kms:${AWS::Region}:314679227390:key/mrk-f5796452ded64aad9731f5ee6cd06c27"
+                    BucketKeyEnabled: true
+            LoggingConfiguration: 
+                DestinationBucketName: !Ref S3Bucket8
+                LogFilePrefix: "uscc-ami-bucket/"
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3Bucket14:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: "hbss-ess-directory"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "aws:kms"
+                        KMSMasterKeyID: !Sub "arn:aws-us-gov:kms:${AWS::Region}:314679227390:key/mrk-f5796452ded64aad9731f5ee6cd06c27"
+                    BucketKeyEnabled: true
+            LoggingConfiguration: 
+                DestinationBucketName: !Ref S3Bucket8
+                LogFilePrefix: "hbss-ess-directory/"
+            VersioningConfiguration: 
+                Status: "Enabled"
+
+    S3BucketPolicy:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Id: "S3SecureTransport"
+                Statement: 
+                  - 
+                    Sid: "AllowSSLRequestsOnly"
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "s3:*"
+                    Resource: 
+                      - !Sub "arn:aws-us-gov:s3:::${S3Bucket}"
+                      - !Sub "arn:aws-us-gov:s3:::${S3Bucket}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+                  - 
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "*"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
+    S3BucketPolicy2:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket2
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Id: "S3SecureTransport"
+                Statement: 
+                  - 
+                    Sid: "AllowSSLRequestsOnly"
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "s3:*"
+                    Resource: 
+                      - !Sub "arn:aws-us-gov:s3:::${S3Bucket2}"
+                      - !Sub "arn:aws-us-gov:s3:::${S3Bucket2}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+                  - 
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "*"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket2}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
+    S3BucketPolicy3:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket3
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Statement: 
+                  - 
+                    Sid: "AWSConfigBucketPermissionsCheck"
+                    Effect: "Allow"
+                    Principal: 
+                        Service: "config.amazonaws.com"
+                    Action: "s3:GetBucketAcl"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket3}"
+                  - 
+                    Sid: "AWSConfigBucketExistenceCheck"
+                    Effect: "Allow"
+                    Principal: 
+                        Service: "config.amazonaws.com"
+                    Action: "s3:ListBucket"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket3}"
+                  - 
+                    Sid: "AWSConfigBucketDelivery"
+                    Effect: "Allow"
+                    Principal: 
+                        Service: "config.amazonaws.com"
+                    Action: "s3:PutObject"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket3}/stream/AWSLogs/${AWS::AccountId}/Config/*"
+                    Condition: 
+                        StringEquals: 
+                            "s3:x-amz-acl": "bucket-owner-full-control"
+                  - 
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "*"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket3}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
+    S3BucketPolicy4:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket6
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Id: "SSLRequestsOnly"
+                Statement: 
+                  - 
+                    Sid: "AllowSSLRequestsOnly"
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "s3:*"
+                    Resource: 
+                      - !Sub "arn:aws-us-gov:s3:::${S3Bucket6}"
+                      - !Sub "arn:aws-us-gov:s3:::${S3Bucket6}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
+    S3BucketPolicy5:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket4
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Statement: 
+                  - 
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "*"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket4}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
+    S3BucketPolicy6:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket5
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Statement: 
+                  - 
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "*"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket5}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
+    S3BucketPolicy7:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket7
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Statement: 
+                  - 
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "*"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket7}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
+    S3BucketPolicy8:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket8
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Id: "SSLRequestsOnly"
+                Statement: 
+                  - 
+                    Sid: "AllowSSLRequestsOnly"
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "s3:*"
+                    Resource: 
+                      - !Sub "arn:aws-us-gov:s3:::${S3Bucket8}"
+                      - !Sub "arn:aws-us-gov:s3:::${S3Bucket8}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
+    S3BucketPolicy9:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket9
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Statement: 
+                  - 
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "*"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket9}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
+    S3BucketPolicy10:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket11
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Statement: 
+                  - 
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "*"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket11}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
+    S3BucketPolicy11:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket10
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Statement: 
+                  - 
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "*"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket10}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
+    S3BucketPolicy12:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket12
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Statement: 
+                  - 
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "*"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket12}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
+    S3BucketPolicy13:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket13
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Statement: 
+                  - 
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "*"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket13}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
+    S3BucketPolicy14:
+        Type: "AWS::S3::BucketPolicy"
+        Properties:
+            Bucket: !Ref S3Bucket14
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Statement: 
+                  - 
+                    Effect: "Deny"
+                    Principal: "*"
+                    Action: "*"
+                    Resource: !Sub "arn:aws-us-gov:s3:::${S3Bucket14}/*"
+                    Condition: 
+                        Bool: 
+                            "aws:SecureTransport": "false"
+
