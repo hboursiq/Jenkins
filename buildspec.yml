@@ -10,7 +10,7 @@ phases:
     on-failure: ABORT
     commands:
       - echo 'begin  build step'
-      - aws cloudformation create-stack --stack-name s3cb-bucket --template-body file://s3bucket-CB.json --region 'us-gov-west-1      
+      - aws cloudformation create-stack --stack-name s3cb-bucket --region 'us-gov-west-1      
       
 
   post_build:
