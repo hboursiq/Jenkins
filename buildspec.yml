@@ -10,8 +10,7 @@ phases:
     on-failure: ABORT
     commands:
       - echo 'begin  build step'
-      - aws --version     
-      
+      - aws cloudformation create-stack --stack-name s3cb-bucket
 
   post_build:
     on-failure: ABORT
