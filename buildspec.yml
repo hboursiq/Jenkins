@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  pre_build:
+    on-failure: ABORT
+    commands:
+      - echo 'begin pre build step'
+      
+  build:
+    on-failure: ABORT
+    commands:
+      - echo 'begin  build step'
+      - aws cloudformation create-stack --stack-name s3testhookbucket --template-body file://s3cft.json --region 'us-gov-west-1'
+
+  post_build:
+    on-failure: ABORT
+    commands:
+      - echo 'begin post build step'
